@@ -1,4 +1,4 @@
-import 'package:demo_genui/router/go_rounter.dart';
+import 'package:demo_genui/router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';

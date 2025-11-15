@@ -1,3 +1,4 @@
+import 'package:demo_genui/common/padding_xy.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,22 +14,26 @@ class InkButton extends StatelessWidget {
 
     return Ink(
       decoration: BoxDecoration(
-        color: isActive ? Colors.amber : Colors.white,
+        color: isActive ? Colors.amber : null,
         borderRadius: BorderRadius.circular(28),
       ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(28),
-        onTap: () => context.go(path),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.home, color: isActive ? Colors.white : Colors.black),
-            if (isActive)
-              Text(
-                path.replaceFirst('/', ''),
-                style: const TextStyle(color: Colors.white),
-              ),
-          ],
+      child: PaddingXY(
+        paddingX: 10,
+        paddingY: 5,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: () => context.go(path),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.home, color: isActive ? Colors.white : Colors.black),
+              if (isActive)
+                Text(
+                  path.replaceFirst('/', ''),
+                  style: const TextStyle(color: Colors.white),
+                ),
+            ],
+          ),
         ),
       ),
     );

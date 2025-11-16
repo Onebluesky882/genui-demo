@@ -11,20 +11,23 @@ final appRouter = GoRouter(
   routes: [
     ShellRoute(
       builder: (context, state, child) {
+        final currentUrl = state.uri.toString();
         return Scaffold(
-          appBar: AppBar(
-            title: Text(state.uri.toString().replaceFirst('/', '')),
-          ),
+          appBar: AppBar(title: Text(currentUrl.replaceFirst('/', ''))),
           body: child,
-          bottomNavigationBar: BottomAppBar(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                InkButton(currentUrl: state.uri.toString(), path: '/one'),
-                InkButton(currentUrl: state.uri.toString(), path: '/two'),
-                InkButton(currentUrl: state.uri.toString(), path: '/three'),
-                InkButton(currentUrl: state.uri.toString(), path: '/four'),
-              ],
+          bottomNavigationBar: SafeArea(
+            child: Container(
+              height: 54,
+              color: Colors.black,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  InkButton(currentUrl: currentUrl, path: '/one'),
+                  InkButton(currentUrl: currentUrl, path: '/two'),
+                  InkButton(currentUrl: currentUrl, path: '/three'),
+                  InkButton(currentUrl: currentUrl, path: '/four'),
+                ],
+              ),
             ),
           ),
         );

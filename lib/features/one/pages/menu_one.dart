@@ -1,3 +1,4 @@
+import 'package:demo_genui/common/padding_xy.dart';
 import 'package:flutter/material.dart';
 
 class MenuOne extends StatelessWidget {
@@ -5,6 +6,23 @@ class MenuOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("1", style: TextStyle(fontSize: 50)));
+    return PaddingXY(
+      paddingY: 16,
+      child: ListView.builder(
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.network(
+              'https://picsum.photos/seed/$index/100/100',
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
+            title: Text('Item $index'),
+            subtitle: Text('Subtitle $index'),
+          );
+        },
+      ),
+    );
   }
 }

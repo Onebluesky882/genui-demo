@@ -5,6 +5,19 @@ class MenuTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("2", style: TextStyle(fontSize: 50)));
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+      ),
+      itemCount: 20,
+      itemBuilder: (context, index) {
+        return Image.network(
+          'https://picsum.photos/seed/$index/200/200',
+          fit: BoxFit.cover,
+        );
+      },
+    );
   }
 }
